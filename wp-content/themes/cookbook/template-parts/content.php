@@ -7,7 +7,7 @@ $step = rwmb_get_value( 'cook_step' );
 $thumb = rwmb_get_value( 'cook_thumb' );
 ?>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8">
         <div class="card">
             <?php if($oembed) : ?>
             <div class="youtube">
@@ -103,7 +103,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
             <?php endforeach; ?>
         </ol>
     </div>
-    <div class="col-md-4 ps-md-5 mt-3 mt-md-0">
+    <div class="col-lg-4 ps-lg-5 mt-3 mt-lg-0">
         <?php get_template_part('template-parts/related-list', get_post_type()) ?>
     </div>
 </div>

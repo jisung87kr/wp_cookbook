@@ -90,9 +90,5 @@ if ( is_search() ) {
 <div class="container">
     <?php get_template_part( 'template-parts/content-grid', get_post_type() ); ?>
 </div>
-<div class="mt-5">
-    <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
-</div>
-
 <?php
 get_footer();

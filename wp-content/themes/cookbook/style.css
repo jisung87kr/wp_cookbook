@@ -104,3 +104,17 @@ img{
   width: 100% !important;
   height: 100% !important;
 }
+
+.widget h2{
+  font-size: 1.5rem;
+}
+
+.widget a{
+  text-decoration: none;
+  color: #5a5a5a;
+}
+
+a:hover{
+  opacity: 0.5;
+  transition: 0.3s;
+}

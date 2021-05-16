@@ -34,7 +34,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-md-5">
                     <?php
                     if ( has_nav_menu( 'primary' ) ) {
                         wp_nav_menu(
@@ -49,7 +49,7 @@
                     ?>
                 </ul>
                 <form class="d-flex" action="/" method="GET">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="s" value="<?php echo get_query_var('s')?>">
+                    <input class="form-control me-2" type="search" placeholder="검색어 입력" aria-label="Search" name="s" value="<?php echo get_query_var('s')?>">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>

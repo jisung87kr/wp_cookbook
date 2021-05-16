@@ -14,7 +14,10 @@
 ?>
 <footer id="site-footer" role="contentinfo" class="header-footer-group">
     <hr>
-    <div class="text-center pt-4">
+    <div class="mt-5">
+        <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
+    </div>
+    <div class="text-center pt-4 mt-5">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-link1 text-muted"><?php bloginfo( 'name' ); ?></a>
         <p class="powered-by-wordpress">
             <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>" class="text-link1 text-muted">
