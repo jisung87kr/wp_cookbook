@@ -59,7 +59,7 @@ img{
 }
 
 .related-list .item:last-child{
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
 }
 
 .related-list .item-body{
