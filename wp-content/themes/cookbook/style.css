@@ -8,6 +8,10 @@ li{
   list-style: none !important;
 }
 
+hr{
+  opacity: 0.1;
+}
+
 img{
   max-width: 100%;
 }
@@ -52,6 +56,10 @@ img{
 
 .related-list .item{
   position: relative;
+}
+
+.related-list .item:last-child{
+  margin-bottom: 0px;
 }
 
 .related-list .item-body{

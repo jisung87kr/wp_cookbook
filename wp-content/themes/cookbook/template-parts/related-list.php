@@ -29,7 +29,7 @@ if(!$posts_array){
 
 $posts_array = get_posts($queryArray);
 ?>
-<h5>내용 더보기</h5>
+<h5>관련글</h5>
 <div class="card">
     <div class="card-body related-list">
         <?php foreach ($posts_array as $index => $item) : ?>

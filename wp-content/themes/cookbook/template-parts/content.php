@@ -22,7 +22,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
             <?php endif; ?>
             <div class="card-body">
                 <div class="card-title">
-                    <?php the_title() ?>
+                    <b><?php the_title() ?></b>
                 </div>
                 <div class="text-muted mt-2">
                     <small><?php echo human_time_diff(get_the_time('U')) ?> 전</small>
@@ -58,7 +58,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                 <?php endif; ?>
             </div>
         </div>
-        <div class="row row-cols-2 g-4 mt-2">
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
             <?php foreach ($group as $key => $value) : $materialTitle = $value['material_group_title'] ?>
                 <div class="col">
                     <div class="card">
