@@ -25,7 +25,7 @@
             </a>
         </p><!-- .powered-by-wordpress -->
     </div>
-</footer><!-- #site-footer.. -->
+</footer><!-- #site-footer -->
 <?php wp_footer(); ?>
 </body>
 </html>
