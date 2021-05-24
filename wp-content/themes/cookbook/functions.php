@@ -204,3 +204,18 @@ function add_additional_class_on_li($classes, $item, $args) {
     return $classes;
 }
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
+function insertTerm($postId)
+{
+    $request = $_REQUEST;
+    $materialGroup = $_REQUEST['material_group'];
+    $terms = [];
+    foreach ($materialGroup as $index => $item) {
+        foreach ($item['material_class'] as $key => $value) {
+            $terms[] = $value['material_name'];
+        }
+    }
+    wp_set_object_terms($postId, $terms, 'material');
+}
+
+add_action('save_post', 'insertTerm');
