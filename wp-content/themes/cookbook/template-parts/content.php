@@ -3,6 +3,7 @@ $category = get_the_terms( $post->ID, 'cookCategory' );
 $tag = get_the_terms( $post->ID, 'cookTag' );
 $oembed = rwmb_meta( 'cook_oembed' );
 $group = rwmb_get_value( 'material_group' );
+var_dump($group);
 $step = rwmb_get_value( 'cook_step' );
 $thumb = rwmb_get_value( 'cook_thumb' );
 ?>
@@ -66,7 +67,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                         <ul class="list-group list-group-flush">
                             <?php
                             foreach ($value['material_class'] as $index => $item) :
-                                $term = get_term($item['material_name'], 'material');
+                                $term = get_term_by('name', $item['material_name'], 'material');
                                 $termLink = get_term_link($term->name, 'material');
                                 $termLink .= '&post_type='.get_post_type(get_the_ID());
                             ?>
