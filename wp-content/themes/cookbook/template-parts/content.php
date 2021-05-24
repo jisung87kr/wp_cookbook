@@ -3,7 +3,6 @@ $category = get_the_terms( $post->ID, 'cookCategory' );
 $tag = get_the_terms( $post->ID, 'cookTag' );
 $oembed = rwmb_meta( 'cook_oembed' );
 $group = rwmb_get_value( 'material_group' );
-var_dump($group);
 $step = rwmb_get_value( 'cook_step' );
 $thumb = rwmb_get_value( 'cook_thumb' );
 ?>
