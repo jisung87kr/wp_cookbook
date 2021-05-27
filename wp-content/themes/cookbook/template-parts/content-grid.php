@@ -20,15 +20,18 @@
             $i++;
             the_post();
             $category = get_the_terms( $post->ID, 'cookCategory' );
+            $oembed = rwmb_meta( 'cook_oembed' );
             $tag = get_the_terms( $post->ID, 'cookTag' );
             $thumb = rwmb_get_value( 'cook_thumb' );
             ?>
             <li id="post-<?php the_ID() ?>" class="post-item col">
                 <div class="card h-100">
                     <a href="<?php the_permalink() ?>">
-                        <?php if($thumb['sizes']['large']['url']) :?>
+                        <?php if($oembed) :?>
+                            <div class="youtube"><?php echo $oembed; ?></div>
+                        <?php elseif ($thumb['sizes']['large']['url']): ?>
                             <img src="<?php echo $thumb['sizes']['large']['url'] ?>" alt="">
-                        <?php else : ?>
+                        <?php else: ?>
                             <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="...">
                         <?php endif; ?>
                     </a>

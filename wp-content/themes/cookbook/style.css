@@ -113,8 +113,3 @@ img{
   text-decoration: none;
   color: #5a5a5a;
 }
-
-a:hover{
-  opacity: 0.5;
-  transition: 0.3s;
-}
