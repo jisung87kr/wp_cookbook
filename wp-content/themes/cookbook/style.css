@@ -113,3 +113,7 @@ img{
   text-decoration: none;
   color: #5a5a5a;
 }
+
+.card img{
+  max-width: 100%;
+}
