@@ -114,6 +114,7 @@ img{
   color: #5a5a5a;
 }
 
+.card figure,
 .card img{
   max-width: 100%;
 }
