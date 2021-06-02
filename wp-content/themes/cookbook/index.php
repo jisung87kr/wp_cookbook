@@ -88,7 +88,7 @@ if ( is_search() ) {
 </header><!-- .archive-header -->
 <?php endif; ?>
 <div class="container">
-    <?php get_template_part( 'template-parts/content-grid', get_post_type() ); ?>
+    <?php get_template_part( 'template-parts/content/content', 'grid'); ?>
 </div>
 <?php
 get_footer();

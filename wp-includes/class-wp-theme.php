@@ -1197,7 +1197,7 @@ final class WP_Theme implements ArrayAccess {
 		if ( ! is_array( $post_templates ) ) {
 			$post_templates = array();
 
-			$files = (array) $this->get_files( 'php', 1, true );
+			$files = (array) $this->get_files( 'php', 2, true );
 
 			foreach ( $files as $file => $full_path ) {
 				if ( ! preg_match( '|Template Name:(.*)$|mi', file_get_contents( $full_path ), $header ) ) {

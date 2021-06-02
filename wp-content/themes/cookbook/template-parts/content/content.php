@@ -68,7 +68,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                             foreach ($value['material_class'] as $index => $item) :
                                 $term = get_term_by('name', $item['material_name'], 'material');
                                 $termLink = get_term_link($term->name, 'material');
-                                $termLink .= '&post_type='.get_post_type(get_the_ID());
+                                //$termLink .= '&post_type='.get_post_type(get_the_ID());
                             ?>
                             <li class="list-group-item">
                                 <small class="text-muted">
