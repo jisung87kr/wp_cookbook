@@ -59,7 +59,8 @@ $thumb = rwmb_get_value( 'cook_thumb' );
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
-            <?php foreach ($group as $key => $value) : $materialTitle = $value['material_group_title'] ?>
+            <?php $terms = []; ?>
+            <?php foreach ($group as $key => $value) : $materialTitle = $value['material_group_title']; ?>
                 <div class="col">
                     <div class="card">
                         <div class="card-header"><?php echo $materialTitle ?></div>
@@ -68,6 +69,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                             foreach ($value['material_class'] as $index => $item) :
                                 $term = get_term_by('name', $item['material_name'], 'material');
                                 $termLink = get_term_link($term->name, 'material');
+                                $terms[$index] = $term;
                                 //$termLink .= '&post_type='.get_post_type(get_the_ID());
                             ?>
                             <li class="list-group-item">
@@ -86,6 +88,19 @@ $thumb = rwmb_get_value( 'cook_thumb' );
             <div class="card-body">
                 <h4 class="mb-3 text-center">장보러 가기</h4>
                 <iframe src="https://coupa.ng/bCTGZa" width="100%" height="36" frameborder="0" scrolling="no" class="mb-1"></iframe>
+                <div>부족한 재료</div>
+                <?php
+                foreach ($terms as $index => $term) {
+                    foreach ($_SESSION['addRefrigerator'] as $index => $item) {
+                        if($term->term_id == $item['term_id']){
+                            continue 2;
+                        }
+                    }
+                ?>
+                <span class="badge bg-secondary"><?php echo $term->name;?></span>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <ol class="p-0 mt-4">
