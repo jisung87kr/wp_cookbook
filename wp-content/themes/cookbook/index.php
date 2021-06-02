@@ -17,17 +17,17 @@ if(is_tax('cookTag') || is_tax('cookCategory') || is_tax('material')){
             'relation' => 'OR',
             array(
                 'taxonomy' => 'cookCategory',
-                'field'    => 'name',
+                'field'    => 'slug',
                 'terms'    => get_query_var('cookCategory'),
             ),
             array(
                 'taxonomy' => 'cookTag',
-                'field'    => 'name',
+                'field'    => 'slug',
                 'terms'    => get_query_var('cookTag'),
             ),
             array(
                 'taxonomy' => 'material',
-                'field'    => 'name',
+                'field'    => 'slug',
                 'terms'    => get_query_var('material'),
             ),
         ),

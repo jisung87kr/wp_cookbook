@@ -219,3 +219,10 @@ function insertTerm($postId)
 }
 
 add_action('save_post', 'insertTerm');
+
+function d($dump)
+{
+    echo '<pre>';
+    var_dump($dump);
+    echo '</pre>';
+}
