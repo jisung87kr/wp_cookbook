@@ -118,3 +118,8 @@ img{
 .card img{
   max-width: 100%;
 }
+
+/*page*/
+.content-refrigerator-item.add{
+  background: #f4f4f4;
+}

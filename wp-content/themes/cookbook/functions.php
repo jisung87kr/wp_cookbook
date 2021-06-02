@@ -67,7 +67,7 @@ function register_styles() {
 add_action( 'wp_enqueue_scripts', 'register_styles' );
 
 function register_scripts() {
-
+    wp_enqueue_script('cookbook_jquery', get_theme_file_uri('/js/jquery-3.6.0.min.js'), array(), '202106', false);
 }
 add_action( 'wp_enqueue_scripts', 'register_scripts' );
 
