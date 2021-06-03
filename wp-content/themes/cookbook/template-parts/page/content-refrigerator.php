@@ -1,15 +1,15 @@
 <?php if($args['terms']) : ?>
-    <div class="row row-cols-6 g-2 content-refrigerator mb-5">
-        <div class="col-12">
-            <h3><?php echo $args['title']; ?></h3>
-        </div>
+    <div class="">
+        <h3><?php echo $args['title']; ?></h3>
+    </div>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2 content-refrigerator mb-5 mt-2">
         <?php foreach ($args['terms'] as $key => $value) : ?>
             <?php
             $myMaterials = wp_list_pluck( $_SESSION['addRefrigerator'], 'term_id' );
             $isAdd = in_array($value->term_id, $myMaterials) ? 'add' : '';
             ?>
             <div class="col">
-                <div class="card p-1 text-center content-refrigerator-item <?php echo $isAdd;?>">
+                <div class="card p-1 p-sm-3 text-center content-refrigerator-item <?php echo $isAdd;?>">
                     <a href="" class="text-link1" data-id="<?php echo $value->term_id ?>"><?php echo $value->name ?></a>
                 </div>
             </div>
