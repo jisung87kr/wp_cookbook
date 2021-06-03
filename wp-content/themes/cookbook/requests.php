@@ -1,5 +1,6 @@
 <?php
 include './classes/CookBook.php';
+use CookBook\Classes\CookBook;
 $CB = new CookBook;
 if($_REQUEST['act']){
     switch($_REQUEST['act']){
