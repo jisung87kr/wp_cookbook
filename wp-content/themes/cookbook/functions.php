@@ -1,6 +1,13 @@
 <?php
 require get_template_directory() . '/inc/template-tags.php';
 
+function theme_init()
+{
+    include get_home_path() . '/vendor/autoload.php';
+}
+
+add_action('init', 'theme_init');
+
 function theme_support()
 {
     add_theme_support( 'automatic-feed-links' );

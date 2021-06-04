@@ -1,5 +1,5 @@
 <?php
-include './classes/CookBook.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 use CookBook\Classes\CookBook;
 $CB = new CookBook;
 if($_REQUEST['act']){
