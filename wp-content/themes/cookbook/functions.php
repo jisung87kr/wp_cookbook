@@ -1,9 +1,10 @@
 <?php
-require get_template_directory() . '/inc/template-tags.php';
+use CookBook\Classes\CookBook;
 
 function theme_init()
 {
     include get_home_path() . '/vendor/autoload.php';
+    require get_template_directory() . '/inc/template-tags.php';
 }
 
 add_action('init', 'theme_init');
