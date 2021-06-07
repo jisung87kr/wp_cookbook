@@ -16,9 +16,37 @@
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+<div class="text-center">
+    <a href="" class="btn btn-primary">레시피 찾기</a>
+</div>
 <?php
+if($_SESSION['addRefrigerator']){
+    global $POSTTYPES;
+    $args = array(
+        'post_type' => $POSTTYPES,
+        'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+        'posts_per_page' => 16,
+    );
 
+    $param = [
+        'title' => '냉장고'
+    ];
 
+    $terms = wp_list_pluck($_SESSION['addRefrigerator'], 'term_id');
+    $taxquery = array(
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'material',
+                'field'    => 'term_id',
+                'terms'    => $terms,
+            ),
+        ),
+    );
+    $args = array_merge($args, $taxquery);
+}
+
+$wp_query = new WP_Query( $args );
+get_template_part( 'template-parts/content/content', 'grid', $param);
 ?>
 <script>
     $(document).ready(function () {

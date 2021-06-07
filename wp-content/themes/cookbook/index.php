@@ -32,7 +32,6 @@ if(is_tax('cookTag') || is_tax('cookCategory') || is_tax('material')){
             ),
         ),
     );
-
     $args = array_merge($args, $taxquery);
 }
 
@@ -70,9 +69,6 @@ if ( is_search() ) {
     $archive_title    = get_the_archive_title();
     $archive_subtitle = get_the_archive_description();
 }
-
-
-
 ?>
 
 <?php if ( $archive_title || $archive_subtitle ) :?>
@@ -88,7 +84,10 @@ if ( is_search() ) {
 </header><!-- .archive-header -->
 <?php endif; ?>
 <div class="container">
-    <?php get_template_part( 'template-parts/content/content', 'grid'); ?>
+    <?php
+    $param = [ 'title' => '최근글'];
+    get_template_part( 'template-parts/content/content', 'grid', $param);
+    ?>
 </div>
 <?php
 get_footer();
