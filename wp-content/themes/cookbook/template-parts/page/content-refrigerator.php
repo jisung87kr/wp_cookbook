@@ -2,25 +2,31 @@
     <div class="">
         <h3><?php echo $args['title']; ?></h3>
     </div>
-    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2 content-refrigerator mb-5 mt-2">
-        <?php foreach ($args['terms'] as $key => $value) : ?>
-            <?php
-            $myMaterials = wp_list_pluck( $_SESSION['addRefrigerator'], 'term_id' );
-            $isAdd = in_array($value->term_id, $myMaterials) ? 'add' : '';
-            ?>
-            <div class="col">
-                <div class="card p-1 p-sm-3 text-center content-refrigerator-item <?php echo $isAdd;?>">
-                    <a href="" class="text-link1" data-id="<?php echo $value->term_id ?>"><?php echo $value->name ?></a>
+    <div class="content-refrigerator-outer">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2 content-refrigerator mb-5 mt-2">
+            <?php foreach ($args['terms'] as $key => $value) : ?>
+                <?php
+                $myMaterials = wp_list_pluck( $_SESSION['addRefrigerator'], 'term_id' );
+                $isAdd = in_array($value->term_id, $myMaterials) ? 'add' : '';
+                ?>
+                <div class="col">
+                    <div class="card p-1 p-sm-3 text-center content-refrigerator-item <?php echo $isAdd;?>">
+                        <a href="" class="text-link1" data-id="<?php echo $value->term_id ?>"><?php echo $value->name ?></a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
 <?php endif; ?>
 <div class="text-center">
     <a href="" class="btn btn-primary">레시피 찾기</a>
 </div>
 <?php
-if($_SESSION['addRefrigerator']){
+use CookBook\Classes\Refrigerator;
+$Refrigerator = new Refrigerator;
+$addRefrigerator = $Refrigerator::addRefrigerator;
+$deleteRefrigerator = $Refrigerator::deleteRefrigerator;
+if($Refrigerator->hasAddRefrigerator()){
     global $POSTTYPES;
     $args = array(
         'post_type' => $POSTTYPES,
@@ -32,7 +38,7 @@ if($_SESSION['addRefrigerator']){
         'title' => '냉장고'
     ];
 
-    $terms = wp_list_pluck($_SESSION['addRefrigerator'], 'term_id');
+    $terms = $Refrigerator->getTerms();
     $taxquery = array(
         'tax_query' => array(
             array(
@@ -55,10 +61,10 @@ get_template_part( 'template-parts/content/content', 'grid', $param);
             e.preventDefault();
             if($(this).hasClass('add')){
                 $(this).removeClass('add');
-                var act = 'deleteRefrigerator';
+                var act = '<?php echo $deleteRefrigerator ?>';
             } else {
                 $(this).addClass('add');
-                var act = 'addRefrigerator';
+                var act = '<?php echo $addRefrigerator ?>';
             }
 
             $.ajax({

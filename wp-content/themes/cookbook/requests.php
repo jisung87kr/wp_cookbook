@@ -1,14 +1,16 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-use CookBook\Classes\CookBook;
-$CB = new CookBook;
+use CookBook\Classes\Refrigerator;
+$Refrigerator = new Refrigerator;
+$addRefrigerator = $Refrigerator::addRefrigerator;
+$deleteRefrigerator = $Refrigerator::deleteRefrigerator;
 if($_REQUEST['act']){
     switch($_REQUEST['act']){
-        case 'addRefrigerator':
-            $CB->addRefrigerator($_REQUEST);
+        case $addRefrigerator:
+            $Refrigerator->addRefrigerator($_REQUEST);
             break;
-        case 'deleteRefrigerator':
-            $CB->deleteRefrigerator($_REQUEST);
+        case $deleteRefrigerator:
+            $Refrigerator->deleteRefrigerator($_REQUEST);
             break;
     }
     exit;

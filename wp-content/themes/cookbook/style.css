@@ -129,3 +129,25 @@ img{
     padding: 40px 10px;
   }
 }
+
+.content-refrigerator-outer{
+  position: relative;
+}
+
+.content-refrigerator-outer:after{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  pointer-events: none;
+}
+
+.content-refrigerator{
+  height: 300px;
+  overflow: scroll;
+  padding-bottom: 50px;
+}

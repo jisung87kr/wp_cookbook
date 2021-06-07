@@ -1,5 +1,6 @@
 <?php
 use CookBook\Classes\CookBook;
+use CookBook\Classes\Refrigerator;
 
 function theme_init()
 {
