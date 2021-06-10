@@ -15,7 +15,7 @@ use CookBook\Classes\Refrigerator;
 $GLOBALS['wp_query'] = $args['wp_query'];
 $CookBook = new CookBook;
 ?>
-<?php if(isset($args['title'])) : ?>
+<?php if($GLOBALS['wp_query']->post_count) : ?>
     <h2><?php echo $args['title']; ?></h2>
 <?php endif; ?>
 <ul class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 p-0 mb-5">
