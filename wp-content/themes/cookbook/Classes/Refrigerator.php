@@ -45,6 +45,7 @@ class Refrigerator{
 
     public function getPosts()
     {
+        $args = [];
         if($this->hasAddRefrigerator()){
             global $POSTTYPES;
             $args = array(
@@ -64,7 +65,8 @@ class Refrigerator{
                 ),
             );
             $args = array_merge($args, $taxquery);
-            return new \WP_Query($args);
+            //return new \WP_Query($args);
         }
+        return new \WP_Query($args);
     }
 }

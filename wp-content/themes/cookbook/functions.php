@@ -1,7 +1,7 @@
 <?php
 use CookBook\Classes\Refrigerator;
-error_reporting( E_ALL );
-ini_set( "display_errors", 1 );
+//error_reporting( E_ALL );
+//ini_set( "display_errors", 1 );
 
 function theme_init()
 {
@@ -13,7 +13,7 @@ add_action('init', 'theme_init');
 
 function theme_support()
 {
-    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'automatic-feed-links' );\
     add_theme_support(
         'custom-background',
         array(
