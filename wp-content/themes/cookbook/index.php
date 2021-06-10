@@ -85,7 +85,9 @@ if ( is_search() ) {
 <?php endif; ?>
 <div class="container">
     <?php
-    $param = [ 'title' => '최근글'];
+    $param = [
+        'wp_query' => $wp_query,
+    ];
     get_template_part( 'template-parts/content/content', 'grid', $param);
     ?>
 </div>

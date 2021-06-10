@@ -1,3 +1,6 @@
+<?php
+use CookBook\Classes\Refrigerator;
+?>
 <?php if($args['terms']) : ?>
     <div class="">
         <h3><?php echo $args['title']; ?></h3>
@@ -18,40 +21,21 @@
         </div>
     </div>
 <?php endif; ?>
-<div class="text-center">
+<div class="text-center mb-5">
     <a href="" class="btn btn-primary">레시피 찾기</a>
 </div>
 <?php
-use CookBook\Classes\Refrigerator;
 $Refrigerator = new Refrigerator;
 $addRefrigerator = $Refrigerator::addRefrigerator;
 $deleteRefrigerator = $Refrigerator::deleteRefrigerator;
-if($Refrigerator->hasAddRefrigerator()){
-    global $POSTTYPES;
-    $args = array(
-        'post_type' => $POSTTYPES,
-        'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-        'posts_per_page' => 16,
-    );
 
-    $param = [
-        'title' => '냉장고'
-    ];
+$wp_query = $Refrigerator->getPosts();
 
-    $terms = $Refrigerator->getTerms();
-    $taxquery = array(
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'material',
-                'field'    => 'term_id',
-                'terms'    => $terms,
-            ),
-        ),
-    );
-    $args = array_merge($args, $taxquery);
-}
+$param = [
+    'title' => '내 재료로 만들수 있는 요리',
+    'wp_query' => $wp_query
+];
 
-$wp_query = new WP_Query( $args );
 get_template_part( 'template-parts/content/content', 'grid', $param);
 ?>
 <script>

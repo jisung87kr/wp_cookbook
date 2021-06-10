@@ -1,4 +1,6 @@
 <?php
+use CookBook\Classes\CookBook;
+use CookBook\Classes\Refrigerator;
 /**
  * The default template for displaying content
  *
@@ -7,11 +9,15 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @subpackage cookbook
+ * @since cookbook 1.0
  */
+$GLOBALS['wp_query'] = $args['wp_query'];
+$CookBook = new CookBook;
 ?>
-<h2><?php echo $args['title']; ?></h2>
+<?php if(isset($args['title'])) : ?>
+    <h2><?php echo $args['title']; ?></h2>
+<?php endif; ?>
 <ul class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 p-0 mb-5">
     <?php
     if ( have_posts() ) :
@@ -23,6 +29,9 @@
             $oembed = rwmb_meta( 'cook_oembed' );
             $tag = get_the_terms( $post->ID, 'cookTag' );
             $thumb = rwmb_get_value( 'cook_thumb' );
+            $group = rwmb_get_value( 'material_group' );
+
+            $materialDiff = $CookBook->getMaterialDiff($group);
             ?>
             <li id="post-<?php the_ID() ?>" class="post-item col">
                 <div class="card h-100">
@@ -41,6 +50,11 @@
                         </div>
                         <div class="card-text">
                             <?php echo wp_trim_words( get_the_content(), 10, '...' ) ?>
+                            <?php if($materialDiff['same']) :?>
+                            <div>
+                                <small class="text-muted"><?php echo $materialDiff['text']; ?></small>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <div class="text-muted mt-2">
                             <small><?php echo human_time_diff(get_the_time('U')) ?> 전</small>

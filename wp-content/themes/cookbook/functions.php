@@ -1,6 +1,7 @@
 <?php
-use CookBook\Classes\CookBook;
 use CookBook\Classes\Refrigerator;
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
 
 function theme_init()
 {
@@ -234,4 +235,49 @@ function d($dump)
     echo '<pre>';
     var_dump($dump);
     echo '</pre>';
+}
+
+function printCoupangLink($keyword){
+    include get_home_path() . '/env.php';
+    date_default_timezone_set("GMT+0");
+
+    $datetime = date("ymd").'T'.date("His").'Z';
+    $method = "POST";
+    $path = "/v2/providers/affiliate_open_api/apis/openapi/v1/deeplink";
+
+    $message = $datetime.$method.str_replace("?", "", $path);
+
+// Replace with your own ACCESS_KEY and SECRET_KEY
+    $ACCESS_KEY = $api['coupang']['ACCESS_KEY'];
+    $SECRET_KEY = $api['coupang']['SECRET_KEY'];
+
+    $algorithm = "HmacSHA256";
+
+    $signature = hash_hmac('sha256', $message, $SECRET_KEY);
+
+    $authorization  = "CEA algorithm=HmacSHA256, access-key=".$ACCESS_KEY.", signed-date=".$datetime.", signature=".$signature;
+
+    $url = 'https://api-gateway.coupang.com'.$path;
+
+    $strjson='
+    {
+        "coupangUrls": [
+            "https://www.coupang.com/np/search?component=&q='.$keyword.'&channel=user" 
+        ]
+    }
+';
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type:  application/json;charset=UTF-8", "Authorization:".$authorization));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $strjson);
+    $result = curl_exec($curl);
+    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+    curl_close($curl);
+
+    $data = json_decode($result);
+    echo $data->data[0]->shortenUrl;
 }

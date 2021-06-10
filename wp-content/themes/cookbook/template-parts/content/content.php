@@ -1,4 +1,6 @@
 <?php
+use CookBook\Classes\Refrigerator;
+$Refrigerator = new Refrigerator;
 $category = get_the_terms( $post->ID, 'cookCategory' );
 $tag = get_the_terms( $post->ID, 'cookTag' );
 $oembed = rwmb_meta( 'cook_oembed' );
@@ -75,6 +77,9 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                             <li class="list-group-item">
                                 <small class="text-muted">
                                     <a href="<?php echo $termLink ?>" class=""><?php echo $term->name?></a>
+                                    <?php if(in_array($term->name, $Refrigerator->getTerms('term'))):?>
+                                    (있음)
+                                    <?php endif; ?>
                                     <span class="float-end"><?php echo $item['material_unit'] ?></span>
                                 </small>
                             </li>
@@ -97,7 +102,9 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                         }
                     }
                 ?>
-                <span class="badge bg-secondary"><?php echo $term->name;?></span>
+                <span class="badge bg-secondary">
+                    <a href="<?php echo printCoupangLink($term->name); ?>" target="_blank"><?php echo $term->name;?></a>
+                </span>
                 <?php
                 }
                 ?>

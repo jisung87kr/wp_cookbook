@@ -8,7 +8,6 @@
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */
-
 ?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>

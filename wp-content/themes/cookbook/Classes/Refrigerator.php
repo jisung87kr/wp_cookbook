@@ -38,8 +38,33 @@ class Refrigerator{
         return false;
     }
 
-    public function getTerms()
+    public function getTerms($term_id = 'term_id')
     {
-        return wp_list_pluck($_SESSION[SELF::addRefrigerator], 'term_id');
+        return wp_list_pluck($_SESSION[SELF::addRefrigerator], $term_id);
+    }
+
+    public function getPosts()
+    {
+        if($this->hasAddRefrigerator()){
+            global $POSTTYPES;
+            $args = array(
+                'post_type' => $POSTTYPES,
+                'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+                'posts_per_page' => 16,
+            );
+
+            $terms = $this->getTerms();
+            $taxquery = array(
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'material',
+                        'field'    => 'term_id',
+                        'terms'    => $terms,
+                    ),
+                ),
+            );
+            $args = array_merge($args, $taxquery);
+            return new \WP_Query($args);
+        }
     }
 }

@@ -151,3 +151,8 @@ img{
   overflow: scroll;
   padding-bottom: 50px;
 }
+
+.badge a{
+  color: #fff;
+  text-decoration: none;
+}
