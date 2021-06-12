@@ -18,7 +18,7 @@ $CookBook = new CookBook;
 <?php if($GLOBALS['wp_query']->post_count) : ?>
     <h2><?php echo $args['title']; ?></h2>
 <?php endif; ?>
-<ul class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 p-0 mb-5">
+<ul class="content-grid row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 p-0 mb-5">
     <?php
     if ( have_posts() ) :
         $i = 0;
@@ -51,9 +51,9 @@ $CookBook = new CookBook;
                         <div class="card-text">
                             <?php echo wp_trim_words( get_the_content(), 10, '...' ) ?>
                             <?php if($materialDiff['same']) :?>
-                            <div>
-                                <small class="text-muted"><?php echo $materialDiff['text']; ?></small>
-                            </div>
+                                <div>
+                                    <small class="text-muted"><?php echo $materialDiff['text']; ?></small>
+                                </div>
                             <?php endif; ?>
                         </div>
                         <div class="text-muted mt-2">
@@ -61,28 +61,28 @@ $CookBook = new CookBook;
                         </div>
                     </div>
                     <?php if($category || $tag) :?>
-                    <div class="card-footer">
-                        <?php if($category) :?>
-                        <div>
-                            <i class="bi bi-archive"></i>
-                            <?php foreach ($category as $index => $item) : $term = get_term_link($item, 'cookCategory'); ?>
-                                <a href="<?= $term ?>">
-                                    <small class="text-muted"><?= $item->name ?></small>
-                                </a>
-                            <?php endforeach; ?>
+                        <div class="card-footer">
+                            <?php if($category) :?>
+                                <div>
+                                    <i class="bi bi-archive"></i>
+                                    <?php foreach ($category as $index => $item) : $term = get_term_link($item, 'cookCategory'); ?>
+                                        <a href="<?= $term ?>">
+                                            <small class="text-muted"><?= $item->name ?></small>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($tag) :?>
+                                <div>
+                                    <i class="bi bi-tag"></i>
+                                    <?php foreach ($tag as $index => $item) : $term = get_term_link($item, 'cookTag'); ?>
+                                        <a href="<?php echo $term ?>">
+                                            <small class="text-muted"><?php echo $item->name ?></small>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                        <?php endif; ?>
-                        <?php if($tag) :?>
-                        <div>
-                            <i class="bi bi-tag"></i>
-                            <?php foreach ($tag as $index => $item) : $term = get_term_link($item, 'cookTag'); ?>
-                                <a href="<?php echo $term ?>">
-                                    <small class="text-muted"><?php echo $item->name ?></small>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-                    </div>
                     <?php endif; ?>
                 </div>
             </li>
