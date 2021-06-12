@@ -7,6 +7,7 @@ get_header();
             'title' => '가지고 있는 재료 선택하기',
             'terms' => get_terms('material', [
                     'orderby' => 'count',
+                    'order' => 'DESC',
                     'childless' => true
             ]),
         ];
