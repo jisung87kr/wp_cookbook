@@ -63,7 +63,7 @@ get_header();
                 autoHeight: true,
                 // slidesPerView: 2,
                 slidesPerView: "auto",
-                spaceBetween: 10,
+                spaceBetween: 15,
                 // centeredSlides: true,
                 // loop: true,
                 breakpoints: {
