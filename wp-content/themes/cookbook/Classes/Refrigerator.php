@@ -51,7 +51,7 @@ class Refrigerator{
             $args = array(
                 'post_type' => $POSTTYPES,
                 'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-                'posts_per_page' => 13,
+                'posts_per_page' => 16,
             );
 
             $terms = $this->getTerms();

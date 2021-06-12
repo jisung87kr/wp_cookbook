@@ -156,3 +156,66 @@ img{
   color: #fff;
   text-decoration: none;
 }
+
+.mySwiper{
+  opacity: 0;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.mySwiper.on{
+  opacity: 1;
+}
+
+.home-content h2,
+.home-content .swiper-wrapper{
+  padding-left: 200px;
+}
+
+.home-content h2{
+  margin-bottom: 20px;
+}
+
+@media(max-width: 1250px){
+  .home-content h2,
+  .home-content .swiper-wrapper{
+    padding-left: 100px;
+  }
+}
+
+@media(max-width: 768px){
+  .home-content h2,
+  .home-content .swiper-wrapper{
+    padding-left: 30px;
+  }
+}
+
+@media(max-width: 640px){
+  /*.home-content{*/
+  /*  padding: 15px;*/
+  /*}*/
+
+  /*.home-content h2,*/
+  /*.home-content .swiper-wrapper{*/
+  /*  padding-left: 0px;*/
+  /*}*/
+
+  .home-content h2{
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .home-content h2,
+  .home-content .swiper-wrapper{
+    padding-left: 30px;
+  }
+
+  .home-content .term-item,
+  .home-content .post-item .card-title{
+    font-size: 14px;
+  }
+
+  .home-content .post-item{
+    font-size: 12px;
+  }
+}
