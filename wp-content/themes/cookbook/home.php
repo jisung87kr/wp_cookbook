@@ -74,6 +74,10 @@ get_header();
                         slidesPerView: 3,
                         spaceBetween: 30,
                     },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
                 },
                 // centeredSlides: true,
                 // autoplay: {
