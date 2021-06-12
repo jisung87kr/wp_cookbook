@@ -61,22 +61,23 @@ get_header();
                     }
                 },
                 autoHeight: true,
-                slidesPerView: 2,
+                // slidesPerView: 2,
+                slidesPerView: "auto",
                 spaceBetween: 10,
                 // centeredSlides: true,
                 // loop: true,
                 breakpoints: {
                     640: {
                         slidesPerView: 2,
-                        spaceBetween: 20,
+                        spaceBetween: 15,
                     },
                     768: {
                         slidesPerView: 3,
-                        spaceBetween: 30,
+                        spaceBetween: 15,
                     },
                     1024: {
                         slidesPerView: 4,
-                        spaceBetween: 30,
+                        spaceBetween: 15,
                     },
                 },
                 // centeredSlides: true,
@@ -97,16 +98,16 @@ get_header();
                 spaceBetween: 5,
                 breakpoints: {
                     640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+                        slidesPerView: 3,
+                        spaceBetween: 15,
                     },
                     768: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
+                        slidesPerView: 5,
+                        spaceBetween: 15,
                     },
                     1024: {
-                        slidesPerView: 4,
-                        spaceBetween: 30,
+                        slidesPerView: 6,
+                        spaceBetween: 15,
                     },
                 },
                 // autoplay: {

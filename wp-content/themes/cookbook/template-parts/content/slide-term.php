@@ -9,7 +9,7 @@
     <ul class="swiper-wrapper">
         <?php foreach ($args['terms'] as $key => $value) : ?>
             <li class="swiper-slide term-item">
-                <div class="card p-2 p-sm-5 text-center">
+                <div class="card p-2 py-4 p-sm-5 text-center">
                     <a href="<?php echo get_term_link($value->term_id) ?>" class="text-link1"><?php echo $value->name ?></a>
                 </div>
             </li>

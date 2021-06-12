@@ -172,6 +172,11 @@ img{
   opacity: 1;
 }
 
+.home-content{
+  max-width: 1920px;
+  margin: auto;
+}
+
 .home-content h2,
 .home-content .swiper-wrapper{
   padding-left: 100px;
@@ -184,7 +189,7 @@ img{
 @media(max-width: 1250px){
   .home-content h2,
   .home-content .swiper-wrapper{
-    padding-left: 100px;
+    padding-left: 50px;
   }
 }
 
@@ -221,5 +226,9 @@ img{
 
   #site-footer{
     padding: 10px;
+  }
+
+  .post-item{
+    width: 300px !important;
   }
 }
