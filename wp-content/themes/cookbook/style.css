@@ -207,7 +207,7 @@ img{
 
   .home-content h2,
   .home-content .swiper-wrapper{
-    padding-left: 30px;
+    padding-left: 15px;
   }
 
   .home-content .term-item,
@@ -217,5 +217,9 @@ img{
 
   .home-content .post-item{
     font-size: 12px;
+  }
+
+  #site-footer{
+    padding: 10px;
   }
 }

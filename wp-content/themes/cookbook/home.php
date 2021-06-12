@@ -62,7 +62,7 @@ get_header();
                 },
                 autoHeight: true,
                 slidesPerView: 2,
-                spaceBetween: 15,
+                spaceBetween: 10,
                 // centeredSlides: true,
                 // loop: true,
                 breakpoints: {
@@ -94,7 +94,7 @@ get_header();
                 },
                 autoHeight: true,
                 slidesPerView: 3,
-                spaceBetween: 15,
+                spaceBetween: 5,
                 breakpoints: {
                     640: {
                         slidesPerView: 2,
