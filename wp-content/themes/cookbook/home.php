@@ -8,6 +8,7 @@ get_header();
     $param = [
         'title' => '내 재료로 만들수 있는 요리',
         'wp_query' => $Refrigerator->getPosts(),
+        'link' => '/refrigerator',
     ];
 
     get_template_part( 'template-parts/content/slide', 'post', $param);
@@ -20,6 +21,7 @@ get_header();
     $param = [
         'title' => '최근글',
         'wp_query' => $cookbook,
+        'link' => '/cookbook',
     ];
 
     get_template_part( 'template-parts/content/slide', 'post', $param);
@@ -27,18 +29,21 @@ get_header();
     $args = [
         'title' => '카테고리',
         'terms' => get_terms('cookCategory', ['orderby' => 'count']),
+        'link' => '/cook-category?type=cookCategory',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
 
     $args = [
         'title' => '재료',
         'terms' => get_terms('material', ['orderby' => 'count', 'number' => '20']),
+        'link' => '/cook-category?type=material',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
 
     $args = [
         'title' => '태그',
         'terms' => get_terms('cookTag', ['orderby' => 'count']),
+        'link' => '/cook-category?type=cookTag',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
     ?>

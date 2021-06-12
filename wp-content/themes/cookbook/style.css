@@ -124,6 +124,11 @@ img{
   background: #f4f4f4;
 }
 
+.text-more{
+  font-size: 20px;
+  margin-left: 20px;
+}
+
 @media (min-width: 560px){
   #site-footer{
     padding: 40px 10px;
@@ -191,14 +196,9 @@ img{
 }
 
 @media(max-width: 640px){
-  /*.home-content{*/
-  /*  padding: 15px;*/
-  /*}*/
-
-  /*.home-content h2,*/
-  /*.home-content .swiper-wrapper{*/
-  /*  padding-left: 0px;*/
-  /*}*/
+  .text-more{
+    font-size: 14px;
+  }
 
   .home-content h2{
     margin-bottom: 10px;
