@@ -281,3 +281,40 @@ function printCoupangLink($keyword){
     $data = json_decode($result);
     echo $data->data[0]->shortenUrl;
 }
+
+function get_posts_custom_query( $query_args ) {
+    global $wpdb;
+    $sql_query = $query_args['sql_query'];
+    // Do the necessary funky stuff here to build $sql_query from the given $query_args
+    $limit = " LIMIT {$query_args['offset']}, {$query_args['posts_per_page']}";
+    $wpdb->get_results($sql_query);
+
+    // If you've limited the results returned and using SQL_CALC_FOUND_ROWS in the select query...
+    if ( $query_args['posts_per_page'] > 1 ) {
+        $found_posts = $wpdb->get_var('SELECT FOUND_ROWS()');
+        $max_num_pages = ceil($found_posts/$query_args['posts_per_page']);
+    }
+
+    // Sanitise each post result
+    $custom_query = $wpdb->get_results($sql_query.$limit);
+    foreach( $custom_query as $i => $post ) {
+        $custom_query[$i] = sanitize_post($post, 'raw');
+    }
+
+    // Setup WP_Query object
+    $new_wp_query = new WP_Query();
+    $new_wp_query->query = $sql_query;
+    $new_wp_query->posts = $custom_query;
+    $new_wp_query->post_count = count($custom_query);
+    $new_wp_query->query_vars = ['paged' => $query_args['paged']];
+    if ( isset($found_posts) ) $new_wp_query->found_posts = $found_posts;
+    if ( isset($max_num_pages) ) $new_wp_query->max_num_pages = $max_num_pages;
+
+
+    // Set the first post
+    if ( $new_wp_query->post_count > 0 )
+        $new_wp_query->post = $custom_query[0];
+
+//    d($new_wp_query);
+    return $new_wp_query;
+}

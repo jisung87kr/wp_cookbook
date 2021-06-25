@@ -69,4 +69,43 @@ class Refrigerator{
         }
         return new \WP_Query($args);
     }
+
+    public function getPosts2()
+    {
+        $args = [];
+        if($this->hasAddRefrigerator()){
+            global $POSTTYPES;
+
+            $terms = $this->getTerms();
+            $terms = implode("','", $terms);
+            $postsPerPage = 16;
+            $paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' ) ;
+            $offset = ($paged - 1) * $postsPerPage;
+            $sql_query = "
+            SELECT
+                   WP.*,
+                   wt.*,
+                   count(WP.id) AS hasCnt
+            FROM wp_posts AS WP
+            LEFT JOIN wp_term_relationships AS R ON WP.id = R.object_id
+            LEFT JOIN wp_term_taxonomy wtt on R.term_taxonomy_id = wtt.term_taxonomy_id
+            LEFT JOIN wp_terms wt on wtt.term_id = wt.term_id
+            WHERE wt.term_id IN ('$terms')
+            AND WP.post_status = 'publish'
+            GROUP BY WP.id
+            ORDER BY hasCnt DESC
+            ";
+
+            $args = array(
+                'sql_query' => $sql_query,
+                'post_type' => $POSTTYPES,
+                'paged' => $paged,
+                'posts_per_page' => $postsPerPage,
+                'offset' => $offset
+            );
+
+            $result = get_posts_custom_query($args);
+        }
+        return $result;
+    }
 }

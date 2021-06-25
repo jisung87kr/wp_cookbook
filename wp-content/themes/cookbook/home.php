@@ -7,7 +7,7 @@ get_header();
     $Refrigerator = new Refrigerator;
     $param = [
         'title' => '내 재료로 만들수 있는 요리',
-        'wp_query' => $Refrigerator->getPosts(),
+        'wp_query' => $Refrigerator->getPosts2(),
         'link' => '/refrigerator',
     ];
 
