@@ -128,5 +128,18 @@ $thumb = rwmb_get_value( 'cook_thumb' );
     <div class="col-lg-4 ps-lg-5 mt-3 mt-lg-0">
         <?php get_template_part('template-parts/related-list', get_post_type()) ?>
     </div>
+    <?php
+    if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+    ?>
+
+    <div class="comments-wrapper section-inner">
+
+        <?php //comments_template(); ?>
+
+    </div>
+
+    <?php
+	}
+	?>
 </div>
 
