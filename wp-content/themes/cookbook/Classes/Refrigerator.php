@@ -32,7 +32,7 @@ class Refrigerator{
 
     public function hasAddRefrigerator()
     {
-        if($_SESSION[SELF::addRefrigerator]){
+        if(!empty($_SESSION[SELF::addRefrigerator])){
             return true;
         }
         return false;
@@ -40,7 +40,12 @@ class Refrigerator{
 
     public function getTerms($term_id = 'term_id')
     {
-        return wp_list_pluck($_SESSION[SELF::addRefrigerator], $term_id);
+        $ra = [];
+        if($this->hasAddRefrigerator()){
+            $ra = wp_list_pluck($_SESSION[SELF::addRefrigerator], $term_id);
+            return $ra;
+        }
+        return $ra;
     }
 
     public function getPosts()
@@ -105,7 +110,8 @@ class Refrigerator{
             );
 
             $result = get_posts_custom_query($args);
+            return $result;
         }
-        return $result;
+        return new \WP_Query();
     }
 }
