@@ -11,35 +11,28 @@ if(get_query_var('s')){
     $args['s'] = get_query_var('s');
 }
 
-if(is_tax('cookTag') || is_tax('cookCategory') || is_tax('material')){
-    $taxquery = array(
-        'tax_query' => array(
-            'relation' => 'OR',
-            array(
-                'taxonomy' => 'cookCategory',
-                'field'    => 'slug',
-                'terms'    => get_query_var('cookCategory'),
+$taxArr = ['cookTag', 'cookCategory', 'material'];
+
+foreach ($taxArr as $index => $item) {
+    if(is_tax($item)){
+        $taxquery = array(
+            'tax_query' => array(
+                array(
+                    'taxonomy' => $item,
+                    'field'    => 'slug',
+                    'terms'    => get_query_var($item),
+                ),
             ),
-            array(
-                'taxonomy' => 'cookTag',
-                'field'    => 'slug',
-                'terms'    => get_query_var('cookTag'),
-            ),
-            array(
-                'taxonomy' => 'material',
-                'field'    => 'slug',
-                'terms'    => get_query_var('material'),
-            ),
-        ),
-    );
-    $args = array_merge($args, $taxquery);
+        );
+        $args = array_merge($args, $taxquery);
+    }
 }
+
 
 $wp_query = new WP_Query( $args );
 $taxonomyName     = '';
 $archive_title    = '';
 $archive_subtitle = '';
-
 if ( is_search() ) {
     global $wp_query;
 

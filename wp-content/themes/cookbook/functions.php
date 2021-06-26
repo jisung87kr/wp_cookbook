@@ -178,16 +178,6 @@ function sidebar_registration() {
 
 add_action( 'widgets_init', 'sidebar_registration' );
 
-//function my_theme_archive_title( $title ) {
-//    if ( is_tax('material') ) {
-//        $title = single_cat_title( '', false );
-//    }
-//
-//    return $title;
-//}
-//
-//add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
-
 function widget_posts_args_add_custom_type($params) {
     global $POSTTYPES;
     $params['post_type'] = $POSTTYPES;
