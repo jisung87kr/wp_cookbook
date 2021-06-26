@@ -21,7 +21,8 @@
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-link1 text-muted"><?php bloginfo( 'name' ); ?></a>
         <p class="powered-by-wordpress">
             <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>" class="text-link1 text-muted">
-                <small><?php _e( 'Powered by WordPress', 'twentytwenty' ); ?></small>
+<!--                <small>--><?php //_e( 'Powered by WordPress', 'twentytwenty' ); ?><!--</small>-->
+                <small><a href="mailto:<?php echo get_bloginfo('admin_email');?>"><?php echo get_bloginfo('admin_email');?></a></small>
             </a>
         </p><!-- .powered-by-wordpress -->
     </div>
