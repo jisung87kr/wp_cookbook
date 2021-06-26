@@ -14,19 +14,19 @@ get_header();
         } else {
             $args = [
                 'title' => '카테고리',
-                'terms' => get_terms('cookCategory', ['orderby' => 'count']),
+                'terms' => get_terms('cookCategory', ['orderby' => 'count', 'order' => 'DESC']),
             ];
             get_template_part('template-parts/page/content', 'term-list', $args);
 
             $args = [
                 'title' => '재료',
-                'terms' => get_terms('material', ['orderby' => 'count']),
+                'terms' => get_terms('material', ['orderby' => 'count', 'order' => 'DESC', 'childless' => true]),
             ];
             get_template_part('template-parts/page/content', 'term-list', $args);
 
             $args = [
                 'title' => '태그',
-                'terms' => get_terms('cookTag', ['orderby' => 'count']),
+                'terms' => get_terms('cookTag', ['orderby' => 'count', 'order' => 'DESC']),
             ];
             get_template_part('template-parts/page/content', 'term-list', $args);
         }

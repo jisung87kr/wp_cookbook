@@ -28,21 +28,21 @@ get_header();
 
     $args = [
         'title' => '카테고리',
-        'terms' => get_terms('cookCategory', ['orderby' => 'count']),
+        'terms' => get_terms('cookCategory', ['orderby' => 'count', 'order' => 'DESC']),
         'link' => '/cook-category?type=cookCategory',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
 
     $args = [
         'title' => '재료',
-        'terms' => get_terms('material', ['orderby' => 'count', 'number' => '20']),
+        'terms' => get_terms('material', ['orderby' => 'count', 'order' => 'DESC', 'number' => '20', 'childless' => true]),
         'link' => '/cook-category?type=material',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
 
     $args = [
         'title' => '태그',
-        'terms' => get_terms('cookTag', ['orderby' => 'count']),
+        'terms' => get_terms('cookTag', ['orderby' => 'count', 'order' => 'DESC']),
         'link' => '/cook-category?type=cookTag',
     ];
     get_template_part('template-parts/content/slide', 'term', $args);
