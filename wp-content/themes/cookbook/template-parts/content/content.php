@@ -30,10 +30,12 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                     <small><?php echo human_time_diff(get_the_time('U')) ?> 전</small>
                 </div>
                 <hr>
+                <?php if(!is_null(the_content())) : ?>
                 <div class="card-text">
-                    <?php the_content() ?>
+                    <?php the_content(); d(); ?>
                 </div>
                 <hr>
+                <?php endif; ?>
                 <?php if($category || $tag) :?>
                     <div class="">
                         <?php if($category) :?>
