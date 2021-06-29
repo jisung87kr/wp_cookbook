@@ -32,7 +32,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                 <hr>
                 <?php if(!is_null(the_content())) : ?>
                 <div class="card-text">
-                    <?php the_content(); d(); ?>
+                    <?php the_content(); ?>
                 </div>
                 <hr>
                 <?php endif; ?>
