@@ -72,12 +72,14 @@ add_action( 'after_setup_theme', 'theme_support' );
 function register_styles() {
     wp_enqueue_style( 'cookbook-style', get_theme_file_uri('/style.css'), array(), time() );
     wp_enqueue_style( 'bootstrap-icon', '/node_modules/bootstrap-icons/font/bootstrap-icons.css', array(), time() );
+    wp_enqueue_style( 'swiper-bundle-css', '/node_modules/swiper/swiper-bundle.css', array(), time() );
 
 }
 add_action( 'wp_enqueue_scripts', 'register_styles' );
 
 function register_scripts() {
     wp_enqueue_script('cookbook_jquery', get_theme_file_uri('/js/jquery-3.6.0.min.js'), array(), '202106', false);
+    wp_enqueue_script('swiper-bundle-js', '/node_modules/swiper/swiper-bundle.js', array(), '202106', false);
 }
 add_action( 'wp_enqueue_scripts', 'register_scripts' );
 

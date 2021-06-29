@@ -48,74 +48,70 @@ get_header();
     get_template_part('template-parts/content/slide', 'term', $args);
     ?>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            var grid = new Swiper(".content-grid", {
-                on: {
-                    afterInit: function(_this){
-                        $(_this.$el).addClass("on");
-                    }
+<script>
+    $(document).ready(function(){
+        var grid = new Swiper(".content-grid", {
+            on: {
+                afterInit: function(_this){
+                    $(_this.$el).addClass("on");
+                }
+            },
+            autoHeight: true,
+            // slidesPerView: 2,
+            slidesPerView: "auto",
+            spaceBetween: 15,
+            // centeredSlides: true,
+            // loop: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
                 },
-                autoHeight: true,
-                // slidesPerView: 2,
-                slidesPerView: "auto",
-                spaceBetween: 15,
-                // centeredSlides: true,
-                // loop: true,
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 15,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 15,
-                    },
-                    1024: {
-                        slidesPerView: 4,
-                        spaceBetween: 15,
-                    },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
                 },
-                // centeredSlides: true,
-                // autoplay: {
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // },
-            });
-
-            var term = new Swiper(".content-term-list", {
-                on: {
-                    afterInit: function(_this){
-                        $(_this.$el).addClass("on");
-                    }
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
                 },
-                autoHeight: true,
-                slidesPerView: 3,
-                spaceBetween: 5,
-                breakpoints: {
-                    640: {
-                        slidesPerView: 3,
-                        spaceBetween: 15,
-                    },
-                    768: {
-                        slidesPerView: 5,
-                        spaceBetween: 15,
-                    },
-                    1024: {
-                        slidesPerView: 6,
-                        spaceBetween: 15,
-                    },
-                },
-                // autoplay: {
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // },
-            });
+            },
+            // centeredSlides: true,
+            // autoplay: {
+            //     delay: 2500,
+            //     disableOnInteraction: false,
+            // },
         });
-    </script>
+
+        var term = new Swiper(".content-term-list", {
+            on: {
+                afterInit: function(_this){
+                    $(_this.$el).addClass("on");
+                }
+            },
+            autoHeight: true,
+            slidesPerView: 3,
+            spaceBetween: 5,
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                },
+                768: {
+                    slidesPerView: 5,
+                    spaceBetween: 15,
+                },
+                1024: {
+                    slidesPerView: 6,
+                    spaceBetween: 15,
+                },
+            },
+            // autoplay: {
+            //     delay: 2500,
+            //     disableOnInteraction: false,
+            // },
+        });
+    });
+</script>
 <?php
 get_footer();
