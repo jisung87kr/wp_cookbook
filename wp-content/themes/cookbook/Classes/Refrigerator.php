@@ -87,18 +87,27 @@ class Refrigerator{
             $paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' ) ;
             $offset = ($paged - 1) * $postsPerPage;
             $sql_query = "
-            SELECT
-                   WP.*,
-                   wt.*,
-                   count(WP.id) AS hasCnt
-            FROM wp_posts AS WP
-            LEFT JOIN wp_term_relationships AS R ON WP.id = R.object_id
-            LEFT JOIN wp_term_taxonomy wtt on R.term_taxonomy_id = wtt.term_taxonomy_id
-            LEFT JOIN wp_terms wt on wtt.term_id = wt.term_id
-            WHERE wt.term_id IN ('$terms')
-            AND WP.post_status = 'publish'
-            GROUP BY WP.id
-            ORDER BY hasCnt DESC
+            SELECT *,
+                   materialCnt - hasCnt AS remains
+            FROM (
+                     SELECT WP.*,
+                            wt.*,
+                            count(WP.id) AS hasCnt,
+                            (SELECT count(*)
+                             FROM wp_posts AS wp
+                                      LEFT JOIN wp_term_relationships AS tr ON wp.id = tr.object_id
+                                      LEFT JOIN wp_term_taxonomy wtt on tr.term_taxonomy_id = wtt.term_taxonomy_id
+                                      LEFT JOIN wp_terms wt on wtt.term_id = wt.term_id
+                             WHERE id = WP.id
+                               AND taxonomy = 'material') AS materialCnt
+                     FROM wp_posts AS WP
+                              LEFT JOIN wp_term_relationships AS R ON WP.id = R.object_id
+                              LEFT JOIN wp_term_taxonomy wtt on R.term_taxonomy_id = wtt.term_taxonomy_id
+                              LEFT JOIN wp_terms wt on wtt.term_id = wt.term_id
+                     WHERE wt.term_id IN ('$terms')
+                       AND WP.post_status = 'publish'
+                     GROUP BY WP.id
+                 ) AS A ORDER BY remains
             ";
 
             $args = array(

@@ -50,7 +50,7 @@ $CookBook = new CookBook;
                         </div>
                         <div class="card-text">
                             <?php echo wp_trim_words( get_the_content(), 10, '...' ) ?>
-                            <?php if($materialDiff['same']) :?>
+                            <?php if($materialDiff['hasCnt']) :?>
                                 <div>
                                     <small class="text-muted"><?php echo $materialDiff['text']; ?></small>
                                 </div>
