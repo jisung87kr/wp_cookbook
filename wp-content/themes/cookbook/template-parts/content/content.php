@@ -73,7 +73,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                             foreach ($value['material_class'] as $index => $item) :
                                 $term = get_term_by('name', $item['material_name'], 'material');
                                 $termLink = get_term_link($term->name, 'material');
-                                $terms[$index] = $term;
+                                $terms[] = $term;
                                 //$termLink .= '&post_type='.get_post_type(get_the_ID());
                             ?>
                             <li class="list-group-item">
@@ -100,7 +100,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                 foreach ($terms as $index => $term) {
                     foreach ($_SESSION['addRefrigerator'] as $index => $item) {
                         if($term->term_id == $item['term_id']){
-                            continue 2;
+                            continue 1;
                         }
                     }
                 ?>
