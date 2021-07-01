@@ -100,7 +100,7 @@ $thumb = rwmb_get_value( 'cook_thumb' );
                 foreach ($terms as $index => $term) {
                     foreach ($_SESSION['addRefrigerator'] as $index => $item) {
                         if($term->term_id == $item['term_id']){
-                            continue 1;
+                            continue 2;
                         }
                     }
                 ?>
