@@ -16,6 +16,11 @@ class Refrigerator{
             'term_id' => $request['term_id'],
             'term'    => $request['term'],
         ];
+
+        if(is_user_logged_in()){
+            update_user_meta(get_current_user_id(), 'cookbook_refrigerator_materials', $_SESSION[$request['act']]);
+        }
+
         $result = json_encode($request);
         echo $result;
     }
@@ -28,12 +33,24 @@ class Refrigerator{
                 unset($_SESSION[SELF::addRefrigerator][$index]);
             }
         }
+        if(is_user_logged_in()){
+            update_user_meta(get_current_user_id(), 'cookbook_refrigerator_materials', $_SESSION[$request['act']]);
+        }
     }
 
     public function hasAddRefrigerator()
     {
         if(!empty($_SESSION[SELF::addRefrigerator])){
             return true;
+        }
+
+        if(is_user_logged_in()){
+            $data = get_user_meta(get_current_user_id(), 'cookbook_refrigerator_materials', true);
+            if($data){
+                $_SESSION[SELF::addRefrigerator] = get_user_meta(get_current_user_id(), 'cookbook_refrigerator_materials', true);
+                return true;
+            }
+
         }
         return false;
     }

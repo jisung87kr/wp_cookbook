@@ -310,3 +310,8 @@ function get_posts_custom_query( $query_args ) {
 //    d($new_wp_query);
     return $new_wp_query;
 }
+
+function get_link_by_slug($slug, $type = 'post'){
+    $post = get_page_by_path($slug, OBJECT, $type);
+    return get_permalink($post->ID);
+}

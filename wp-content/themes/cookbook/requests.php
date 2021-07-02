@@ -1,4 +1,5 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 use CookBook\Classes\Refrigerator;
 $Refrigerator = new Refrigerator;
