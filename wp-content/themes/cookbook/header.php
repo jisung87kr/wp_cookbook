@@ -29,9 +29,9 @@
     <div class="container-fluid">
         <ul id="nav-top" class="mb-0 px-3 py-1">
             <?php if(is_user_logged_in()) : ?>
-                <li><a href="'.wp_logout_url(site_url()).'">로그아웃</a></li>
+                <li><a href="<?php echo wp_logout_url(site_url()) ?>">로그아웃</a></li>
             <?php else: ?>
-                <li><a href="' . wp_login_url() . '">로그인</a></li>
+                <li><a href="<?php echo wp_login_url() ?>">로그인</a></li>
             <?php endif;?>
         </ul>
     </div>
