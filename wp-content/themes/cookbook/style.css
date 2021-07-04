@@ -232,3 +232,9 @@ img{
     width: 300px !important;
   }
 }
+
+#nav-top{
+  font-size: 12px;
+  text-align: right;
+  text-transform: uppercase;
+}

@@ -26,6 +26,15 @@
 <?php wp_body_open(); ?>
 
 <header id="site-header" class="header-footer-group" role="banner">
+    <div class="container-fluid">
+        <ul id="nav-top" class="mb-0 px-3 py-1">
+            <?php if(is_user_logged_in()) : ?>
+                <li><a href="'.wp_logout_url(site_url()).'">로그아웃</a></li>
+            <?php else: ?>
+                <li><a href="' . wp_login_url() . '">로그인</a></li>
+            <?php endif;?>
+        </ul>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="gnb">
         <div class="container-fluid">
             <?php cookbook_site_logo(); ?>

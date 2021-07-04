@@ -23,40 +23,18 @@ use CookBook\Classes\Refrigerator;
 <?php endif; ?>
 <div class="text-center mb-5">
     <a href="" class="btn btn-primary">레시피 찾기</a>
+    <div class="mt-2">
+        <small class="text-muted">
+            <ul>
+                <li>선택한 재료와 가장많이 일치하는 레시피를 검색합니다.</li>
+                <?php if(!is_user_logged_in()): ?>
+                <li><a href="<?php echo wp_login_url(); ?>">로그인</a>해서 재료를 관리하세요.</li>
+                <?php endif; ?>
+            </ul>
+        </small>
+    </div>
 </div>
-    <script>
-        $(document).ready(function () {
-            var themeUrl = "<?php echo get_template_directory_uri(); ?>";
-            $(".content-refrigerator-item").click(function (e) {
-                e.preventDefault();
-                if($(this).hasClass('add')){
-                    $(this).removeClass('add');
-                    var act = '<?php echo $deleteRefrigerator ?>';
-                } else {
-                    $(this).addClass('add');
-                    var act = '<?php echo $addRefrigerator ?>';
-                }
 
-                $.ajax({
-                    data: {
-                        'act': act,
-                        'term_id' : $("a", this).data('id'),
-                        'term' : $("a", this).text(),
-                    },
-                    url: themeUrl + '/requests.php',
-                    async: true,
-                    dataType: 'json',
-                    method: 'POST',
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function(data){
-                        console.log(data);
-                    },
-                });
-            });
-        });
-    </script>
 <?php
 $Refrigerator = new Refrigerator;
 $addRefrigerator = $Refrigerator::addRefrigerator;
@@ -71,3 +49,37 @@ $param = [
 
 get_template_part( 'template-parts/content/content', 'grid', $param);
 ?>
+<script>
+    $(document).ready(function () {
+        var themeUrl = "<?php echo get_template_directory_uri(); ?>";
+        console.log(themeUrl);
+        $(".content-refrigerator-item").click(function (e) {
+            e.preventDefault();
+            if($(this).hasClass('add')){
+                $(this).removeClass('add');
+                var act = '<?php echo $deleteRefrigerator ?>';
+            } else {
+                $(this).addClass('add');
+                var act = '<?php echo $addRefrigerator ?>';
+            }
+
+            $.ajax({
+                data: {
+                    'act': act,
+                    'term_id' : $("a", this).data('id'),
+                    'term' : $("a", this).text(),
+                },
+                url: themeUrl + '/requests.php',
+                async: true,
+                dataType: 'json',
+                method: 'POST',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log(data);
+                },
+            });
+        });
+    });
+</script>

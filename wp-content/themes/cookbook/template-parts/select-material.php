@@ -1,7 +1,11 @@
 <div class="container">
     <?php
+    $title = '내 재료 선택하기';
+    if(is_user_logged_in()){
+        $title = '내 재료 관리하기';
+    }
     $args = [
-        'title' => '가지고 있는 재료 선택하기',
+        'title' => $title,
         'terms' => get_terms('material', [
             'orderby' => 'count',
             'order' => 'DESC',
