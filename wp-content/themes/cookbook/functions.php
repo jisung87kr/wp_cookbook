@@ -315,3 +315,12 @@ function get_link_by_slug($slug, $type = 'post'){
     $post = get_page_by_path($slug, OBJECT, $type);
     return get_permalink($post->ID);
 }
+
+function admin_default_page($url, $query, $user) {
+    if ( !in_array( 'administrator', $user->roles, true ) ) {
+        return site_url();
+    }
+    return admin_url();
+}
+
+add_filter('login_redirect', 'admin_default_page', 10, 3);
