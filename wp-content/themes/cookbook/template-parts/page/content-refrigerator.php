@@ -24,6 +24,39 @@ use CookBook\Classes\Refrigerator;
 <div class="text-center mb-5">
     <a href="" class="btn btn-primary">레시피 찾기</a>
 </div>
+    <script>
+        $(document).ready(function () {
+            var themeUrl = "<?php echo get_template_directory_uri(); ?>";
+            $(".content-refrigerator-item").click(function (e) {
+                e.preventDefault();
+                if($(this).hasClass('add')){
+                    $(this).removeClass('add');
+                    var act = '<?php echo $deleteRefrigerator ?>';
+                } else {
+                    $(this).addClass('add');
+                    var act = '<?php echo $addRefrigerator ?>';
+                }
+
+                $.ajax({
+                    data: {
+                        'act': act,
+                        'term_id' : $("a", this).data('id'),
+                        'term' : $("a", this).text(),
+                    },
+                    url: themeUrl + '/requests.php',
+                    async: true,
+                    dataType: 'json',
+                    method: 'POST',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function(data){
+                        console.log(data);
+                    },
+                });
+            });
+        });
+    </script>
 <?php
 $Refrigerator = new Refrigerator;
 $addRefrigerator = $Refrigerator::addRefrigerator;
@@ -38,36 +71,3 @@ $param = [
 
 get_template_part( 'template-parts/content/content', 'grid', $param);
 ?>
-<script>
-    $(document).ready(function () {
-        var themeUrl = "<?php echo get_template_directory_uri(); ?>";
-        $(".content-refrigerator-item").click(function (e) {
-            e.preventDefault();
-            if($(this).hasClass('add')){
-                $(this).removeClass('add');
-                var act = '<?php echo $deleteRefrigerator ?>';
-            } else {
-                $(this).addClass('add');
-                var act = '<?php echo $addRefrigerator ?>';
-            }
-
-            $.ajax({
-                data: {
-                    'act': act,
-                    'term_id' : $("a", this).data('id'),
-                    'term' : $("a", this).text(),
-                },
-                url: themeUrl + '/requests.php',
-                async: true,
-                dataType: 'json',
-                method: 'POST',
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function(data){
-                    console.log(data);
-                },
-            });
-        });
-    });
-</script>

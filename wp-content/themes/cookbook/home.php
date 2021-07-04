@@ -5,13 +5,17 @@ get_header();
 <div class="home-content">
     <?php
     $Refrigerator = new Refrigerator;
-    $param = [
-        'title' => '내 재료로 만들수 있는 요리',
-        'wp_query' => $Refrigerator->getPosts2(),
-        'link' => '/refrigerator',
-    ];
+    if(empty($Refrigerator->getTerms())){
+        get_template_part('template-parts/select-material');
+    } else{
+        $param = [
+            'title' => '내 재료로 만들수 있는 요리',
+            'wp_query' => $Refrigerator->getPosts2(),
+            'link' => '/refrigerator',
+        ];
 
-    get_template_part( 'template-parts/content/slide', 'post', $param);
+        get_template_part( 'template-parts/content/slide', 'post', $param);
+    }
 
     $args = [
       'post_type' => 'cookbook',
