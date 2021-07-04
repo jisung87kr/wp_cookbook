@@ -47,6 +47,11 @@ $CookBook = new CookBook;
                     <div class="card-body">
                         <div class="card-title">
                             <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                            <div class="bookmark-box">
+                                <a href="" class="text-link1">
+                                    <i class="bi bi-bookmark-star-fill bookmark bookmark-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="관심 레시피로 등록합니다."></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-text">
                             <?php echo wp_trim_words( get_the_content(), 10, '...' ) ?>
@@ -91,4 +96,12 @@ $CookBook = new CookBook;
     endif;
     ?>
 </ul>
+<script>
+    $("document").ready(function(){
+       $(".bookmark").click(function(e){
+           e.preventDefault();
+           $(this).toggleClass('active');
+       });
+    });
+</script>
 <?php bootstrap_pagination(); ?>

@@ -26,7 +26,7 @@ use CookBook\Classes\Refrigerator;
     <div class="mt-2">
         <small class="text-muted">
             <ul>
-                <li>선택한 재료와 가장많이 일치하는 레시피를 검색합니다.</li>
+                <li>선택한 재료와 가장 많이 일치하는 레시피를 검색합니다.</li>
                 <?php if(!is_user_logged_in()): ?>
                 <li><a href="<?php echo wp_login_url(); ?>">로그인</a>해서 재료를 관리하세요.</li>
                 <?php endif; ?>

@@ -238,3 +238,27 @@ img{
   text-align: right;
   text-transform: uppercase;
 }
+
+.post-item .card-title{
+  position: relative;
+  padding-right: 40px;
+}
+
+.bookmark{
+  position: absolute;
+  right: -5px;
+  top: -3px;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 100%;
+  font-size: 20px;
+  display: inline-block;
+}
+
+.bookmark-fill.active{
+  color: #ee8431;
+  border: 1px solid #ee8431;
+}
