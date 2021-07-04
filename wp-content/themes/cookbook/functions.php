@@ -188,6 +188,13 @@ function widget_posts_args_add_custom_type($params) {
 
 add_filter('widget_posts_args', 'widget_posts_args_add_custom_type');
 
+add_filter('widget_categories_args', function( $params ) {
+    global $POSTTYPES;
+    $params['post_type'] = $POSTTYPES;
+    $params['taxonomy'] = 'cookCategory';
+    return $params;
+});
+
 function search_filter($query) {
     global $POSTTYPES;
     if ( ! is_admin() && $query->is_main_query() ) {
