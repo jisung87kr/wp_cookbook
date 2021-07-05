@@ -37,4 +37,13 @@ class CookBook{
         $ra['text'] = $ra['total'].'개의 재료 중 '.$ra['remains'].'개 부족';
         return $ra;
     }
+
+    function isFavorited($post_id, $user_id)
+    {
+        $favorite = get_post_meta($post_id, 'cookbook_favorite');
+        if(in_array($user_id, $favorite)){
+            return true;
+        }
+        return false;
+    }
 }

@@ -34,6 +34,7 @@ $CookBook = new CookBook;
             $materialDiff = $CookBook->getMaterialDiff($group);
             ?>
             <li id="post-<?php the_ID() ?>" class="post-item col">
+                <input type="hidden" name="post_id" value="<?= the_ID() ?>" class="post_id" id="postid_<?= the_ID() ?>">
                 <div class="card h-100">
                     <a href="<?php the_permalink() ?>">
                         <?php if($oembed) :?>
@@ -49,7 +50,10 @@ $CookBook = new CookBook;
                             <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                             <div class="bookmark-box">
                                 <a href="" class="text-link1">
-                                    <i class="bi bi-bookmark-star-fill bookmark bookmark-fill"></i>
+                                    <?php
+                                    $isActive = $CookBook->isFavorited($post->ID, get_current_user_id()) == true ? 'active' : '';
+                                    ?>
+                                    <i class="bi bi-bookmark-star-fill bookmark bookmark-fill <?= $isActive ?>"></i>
                                 </a>
                             </div>
                         </div>
@@ -100,7 +104,32 @@ $CookBook = new CookBook;
     $("document").ready(function(){
        $(".bookmark").click(function(e){
            e.preventDefault();
+           var themeUrl = "<?php echo get_template_directory_uri(); ?>";
+           var post_id = $(this).parents('.post-item').find('.post_id').val();
            $(this).toggleClass('active');
+
+           if($(this).hasClass('active')){
+               var act = 'addFavorite';
+           } else {
+               var act = 'deleteFavorite';
+           }
+
+           $.ajax({
+               data: {
+                   'act': act,
+                   'post_id' : post_id,
+               },
+               url: themeUrl + '/requests.php',
+               async: true,
+               dataType: 'json',
+               method: 'POST',
+               success: function (data) {
+                   console.log(data);
+               },
+               error: function(data){
+                   console.log(data);
+               },
+           });
        });
     });
 </script>

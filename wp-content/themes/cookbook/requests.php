@@ -13,6 +13,14 @@ if($_REQUEST['act']){
         case $deleteRefrigerator:
             $Refrigerator->deleteRefrigerator($_REQUEST);
             break;
+        case 'addFavorite':
+            $metaKey = 'cookbook_favorite';
+            add_post_meta($_REQUEST['post_id'], $metaKey, get_current_user_id());
+            break;
+        case 'deleteFavorite':
+            $metaKey = 'cookbook_favorite';
+            delete_post_meta($_REQUEST['post_id'], $metaKey, get_current_user_id());
+            break;
     }
     exit;
 }
