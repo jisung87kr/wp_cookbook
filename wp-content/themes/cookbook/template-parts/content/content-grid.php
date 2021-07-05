@@ -49,7 +49,7 @@ $CookBook = new CookBook;
                             <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                             <div class="bookmark-box">
                                 <a href="" class="text-link1">
-                                    <i class="bi bi-bookmark-star-fill bookmark bookmark-fill" data-bs-toggle="tooltip" data-bs-placement="top" title="관심 레시피로 등록합니다."></i>
+                                    <i class="bi bi-bookmark-star-fill bookmark bookmark-fill"></i>
                                 </a>
                             </div>
                         </div>

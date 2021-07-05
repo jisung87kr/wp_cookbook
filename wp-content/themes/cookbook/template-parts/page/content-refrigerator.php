@@ -22,7 +22,7 @@ use CookBook\Classes\Refrigerator;
     </div>
 <?php endif; ?>
 <div class="text-center mb-5">
-    <a href="" class="btn btn-primary">레시피 찾기</a>
+    <a href="" class="btn btn-primary btn-submit">레시피 찾기</a>
     <div class="mt-2">
         <small class="text-muted">
             <ul>
@@ -52,7 +52,15 @@ get_template_part( 'template-parts/content/content', 'grid', $param);
 <script>
     $(document).ready(function () {
         var themeUrl = "<?php echo get_template_directory_uri(); ?>";
-        console.log(themeUrl);
+        $(".btn-submit").click(function(e){
+            if($(".content-refrigerator-item.add").length == 0){
+                e.preventDefault();
+                alert('재료를 선택하세요');
+                return false;
+            }
+            return true;
+        });
+
         $(".content-refrigerator-item").click(function (e) {
             e.preventDefault();
             if($(this).hasClass('add')){
