@@ -122,11 +122,7 @@ class Refrigerator{
                  ) AS A ORDER BY remains
             ";
 
-            $args = array(
-                'sql_query' => $sql_query,
-            );
-
-            $result = get_posts_custom_query($args);
+            $result = get_posts_custom_query($sql_query);
             return $result;
         }
         return new \WP_Query();

@@ -281,7 +281,7 @@ function printCoupangLink($keyword){
     echo $data->data[0]->shortenUrl;
 }
 
-function get_posts_custom_query( $query_args ) {
+function get_posts_custom_query( $sql ) {
     global $wpdb;
     global $POSTTYPES;
 
@@ -289,14 +289,14 @@ function get_posts_custom_query( $query_args ) {
     $paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' ) ;
     $offset = ($paged - 1) * $postsPerPage;
 
-    $arg = [
+    $query_args = [
         'post_type' => $POSTTYPES,
         'paged' => $paged,
         'posts_per_page' => $postsPerPage,
-        'offset' => $offset
+        'offset' => $offset,
+        'sql_query' => $sql
     ];
 
-    $query_args = array_merge($arg, $query_args);
 
     $sql_query = $query_args['sql_query'];
     // Do the necessary funky stuff here to build $sql_query from the given $query_args
