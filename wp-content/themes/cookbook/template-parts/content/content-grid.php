@@ -50,9 +50,7 @@ $CookBook = new CookBook;
                             <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                             <div class="bookmark-box">
                                 <a href="" class="text-link1">
-                                    <?php
-                                    $isActive = $CookBook->isFavorited($post->ID, get_current_user_id()) == true ? 'active' : '';
-                                    ?>
+                                    <?php $isActive = $CookBook->isFavorited($post->ID, get_current_user_id()) == true ? 'active' : ''; ?>
                                     <i class="bi bi-bookmark-star-fill bookmark bookmark-fill <?= $isActive ?>"></i>
                                 </a>
                             </div>
@@ -102,8 +100,13 @@ $CookBook = new CookBook;
 </ul>
 <script>
     $("document").ready(function(){
+        var is_login = '<?php echo is_user_logged_in() ?>';
        $(".bookmark").click(function(e){
            e.preventDefault();
+           if(is_login != 1){
+               window.location.href = '<?php echo wp_login_url(); ?>';
+               return false;
+           }
            var themeUrl = "<?php echo get_template_directory_uri(); ?>";
            var post_id = $(this).parents('.post-item').find('.post_id').val();
            $(this).toggleClass('active');
