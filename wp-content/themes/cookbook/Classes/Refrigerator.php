@@ -96,13 +96,8 @@ class Refrigerator{
     {
         $args = [];
         if($this->hasAddRefrigerator()){
-            global $POSTTYPES;
-
             $terms = $this->getTerms();
             $terms = implode("','", $terms);
-            $postsPerPage = 16;
-            $paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' ) ;
-            $offset = ($paged - 1) * $postsPerPage;
             $sql_query = "
             SELECT *,
                    materialCnt - hasCnt AS remains
@@ -129,10 +124,6 @@ class Refrigerator{
 
             $args = array(
                 'sql_query' => $sql_query,
-                'post_type' => $POSTTYPES,
-                'paged' => $paged,
-                'posts_per_page' => $postsPerPage,
-                'offset' => $offset
             );
 
             $result = get_posts_custom_query($args);

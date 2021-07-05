@@ -283,6 +283,21 @@ function printCoupangLink($keyword){
 
 function get_posts_custom_query( $query_args ) {
     global $wpdb;
+    global $POSTTYPES;
+
+    $postsPerPage = 16;
+    $paged = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' ) ;
+    $offset = ($paged - 1) * $postsPerPage;
+
+    $arg = [
+        'post_type' => $POSTTYPES,
+        'paged' => $paged,
+        'posts_per_page' => $postsPerPage,
+        'offset' => $offset
+    ];
+
+    $query_args = array_merge($arg, $query_args);
+
     $sql_query = $query_args['sql_query'];
     // Do the necessary funky stuff here to build $sql_query from the given $query_args
     $limit = " LIMIT {$query_args['offset']}, {$query_args['posts_per_page']}";
