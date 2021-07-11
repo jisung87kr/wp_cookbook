@@ -56,9 +56,9 @@
                     }
                     ?>
                 </ul>
-                <form class="d-flex" action="/" method="GET">
+                <form class="d-flex search-box" action="/" method="GET">
                     <input class="form-control me-2" type="search" placeholder="검색어 입력" aria-label="Search" name="s" value="<?php echo get_query_var('s')?>">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-primary" type="submit">검색</button>
                 </form>
             </div>
         </div>

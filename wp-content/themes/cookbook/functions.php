@@ -346,3 +346,37 @@ function admin_default_page($url, $query, $user) {
 }
 
 add_filter('login_redirect', 'admin_default_page', 10, 3);
+
+/**
+ * 로그인
+ */
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background: none;
+            height:auto;
+            width:auto;
+            padding-bottom: 30px;
+            text-indent: initial;
+            padding-bottom: 0px;
+            font-size: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'cookbook';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+function custom_login_title( $login_title ) {
+    $login_title = 'cookbook - 로그인 페이지';
+    return $login_title;
+}
+add_filter( 'login_title', 'custom_login_title' );

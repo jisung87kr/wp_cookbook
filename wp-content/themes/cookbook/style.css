@@ -52,6 +52,7 @@ img{
 
 .text-link1{
   text-decoration: none;
+  color: #333;
 }
 
 .related-list .item{
@@ -261,4 +262,8 @@ img{
 .bookmark-fill.active{
   color: #ee8431;
   border: 1px solid #ee8431;
+}
+
+.search-box{
+  word-break: keep-all;
 }
